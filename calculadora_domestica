@@ -1,0 +1,61 @@
+# DEFINE ALGUMAS VARIAVEIS
+
+# titulo do progama
+title = "Calculadora domestica"
+# descrição do progama
+description = "Vamos somar as constas de casa!"
+
+# INICIO DO PROGAMA
+
+# executa quando inicia o progama
+# exibir titulo
+print(title)
+# exibir descrição do progama
+print(description)
+
+# list de pessoas para divir a conta(serão adicionados dinamicamente no codigo)
+peoples = []  # lista com  contas e valores para pessoas que irão dividir
+
+# inicia loop(repetição) para adicionar dinamicamente pessoas(conta e valores) na lista
+while True:
+    # este e um loop infinito ate ser interrompido pelo usuario
+    # pega nome da conta
+    account = input("Digite o nome da conta: ")
+    # pega valor da conta
+    value = float(input("Digite seu valor: "))
+    # adiciona conta e valor em uma lista que não pode alterar
+    imutable = (account, value)
+    # adiciona lista com conta e valor na lista de pessoas
+    peoples.append(imutable)
+    # pergunta se usuario quer continuar adicionando 'pessoas(contas)'
+    more_account = input("Há mais contas para incluir? (Digite s/n): ")
+    # verifica se usuario quer mais contas(se digitou n ou N  ele nao quer)
+    if more_account == "n" or more_account == "N":
+        # aqui o usuario não quer adicionar mais contas
+        # encerrando loop(repetição)
+        break
+    # se chegar aqui ele vai para o começo do loop(repetir tudo denovo)
+
+# checa se foi adicionado pelo menos uma conta
+# exibe informações se tiver pelo menos uma conta
+if len(peoples) > 0:
+    # soma valor de todas as contas
+    total_value = 0  # valor total da soma dos valores das contas
+    # inicia  loop(repetição) para cada conta na lista de contas
+    for account in peoples:
+        # pega conta e valor da conta atual que esta sendo acessada no loop
+        account, value = account
+        # soma o valor da conta atual com o total de valores
+        total_value += value
+    # calcula a media entre total de contas para total de valores
+    median = float(total_value / len(peoples))
+    # mostra informações ao usuario de contas para usuario
+    # interação com todas contas adicionadas
+    for account in peoples:
+        # pega nome da conta e valor
+        account, value = account
+        # exibe ao usuario
+        print(f"{account}-->R$ {value}")
+    # exibe soma das contas
+    print(f"A soma das contas são R$ {total_value}")
+    print(f"Dividido por {len(peoples)} ficará R$ {median} para cada um")
